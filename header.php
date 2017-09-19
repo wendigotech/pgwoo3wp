@@ -60,7 +60,7 @@
             </header>
             <div class="hero jumbotron">
                 <div class="hero-content">
-                    <video loop autoplay muted poster="<?php echo get_template_directory_uri(); ?>/videos/video_background.jpg" class="hero-video">
+                    <video loop autoplay muted poster="<?php echo get_template_directory_uri(); ?>/videos/video_background.jpg" class="hero-video" src="videos/video_background.mp4">
                         <source src="<?php echo get_template_directory_uri(); ?>/videos/video_background.mp4" type="video/mp4" />
                         <source src="<?php echo get_template_directory_uri(); ?>/videos/video_background.ogg" type="video/ogg" />
                         <source src="<?php echo get_template_directory_uri(); ?>/videos/video_background.webm" type="video/webm" />
