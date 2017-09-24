@@ -56,6 +56,9 @@
                         <p><a class="btn btn-primary btn-lg btn-outline" role="button" href="#more" style="color:<?php echo '#'.get_header_textcolor() ?>;border-color:<?php echo '#'.get_header_textcolor() ?>;"><?php _e( 'Read more', 'pgwoo3' ); ?></a></p>
                     </div>
                 </div>
+                <?php if ( is_singular() ) : ?>
+                    <?php wp_enqueue_script( 'comment-reply' ); ?>
+                <?php endif; ?>
                 <div class="container-fluid breadcrumbs-section" id="more">
                     <div class="row">
                         <div class="col-md-12">
@@ -65,8 +68,5 @@
                         </div>
                     </div>
                 </div>
-                <?php if ( is_singular() ) : ?>
-                    <?php wp_enqueue_script( 'comment-reply' ); ?>
-                <?php endif; ?>
             </header>
             <main class="site-inner site-content">
