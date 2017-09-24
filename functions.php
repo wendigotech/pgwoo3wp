@@ -66,6 +66,16 @@ function pg_starter_init() {
      */
     /* Pinegrow generated Custom Post Types Begin */
 
+    register_post_type('portfolio_item', array(
+        'labels' => 
+            array(
+                'name' => __( 'Portfolio items', 'pgwoo3' ),
+                'singular_name' => __( 'Portfolio item', 'pgwoo3' )
+            ),
+        'public' => true,
+        'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'page-attributes', 'post-formats' )
+    ));
+
     /* Pinegrow generated Custom Post Types End */
 
     /*
