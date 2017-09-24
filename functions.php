@@ -167,6 +167,15 @@ if ( ! function_exists( 'pg_starter_enqueue_scripts' ) ) :
 
     wp_enqueue_script( 'ieviewportbugworkaround', get_template_directory_uri() . '/assets/js/ie10-viewport-bug-workaround.js' );
 
+    wp_deregister_script( 'cbpanimatedheader' );
+    wp_enqueue_script( 'cbpanimatedheader', get_template_directory_uri() . '/components/freelancer/js/cbpAnimatedHeader.min.js', false, null, true);
+
+    wp_deregister_script( 'cbpanimatedheader' );
+    wp_enqueue_script( 'cbpanimatedheader', get_template_directory_uri() . '/components/freelancer/js/cbpAnimatedHeader.js', false, null, true);
+
+    wp_deregister_script( 'classie' );
+    wp_enqueue_script( 'classie', get_template_directory_uri() . '/components/freelancer/js/classie.js', false, null, true);
+
     wp_enqueue_script( 'cbpanimatedheader', get_template_directory_uri() . '/components/freelancer/js/cbpAnimatedHeader.min.js' );
 
     wp_enqueue_script( 'cbpanimatedheader', get_template_directory_uri() . '/components/freelancer/js/cbpAnimatedHeader.js' );
@@ -177,23 +186,14 @@ if ( ! function_exists( 'pg_starter_enqueue_scripts' ) ) :
 
         /* Pinegrow generated Enqueue Styles Begin */
 
-    wp_deregister_style( 'bootstrap' );
-    wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', false, null, 'all');
-
-    wp_deregister_style( 'fontawesome' );
-    wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/assets/font-awesome-4.6.3/css/font-awesome.min.css', false, null, 'all');
-
-    wp_deregister_style( 'style' );
-    wp_enqueue_style( 'style', get_bloginfo('stylesheet_url'), false, null, 'all');
-
-    wp_deregister_style( 'new' );
-    wp_enqueue_style( 'new', get_template_directory_uri() . '/new.css', false, null, 'all');
-
     wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', null, '3.3.6', 'all' );
 
     wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/assets/font-awesome-4.6.3/css/font-awesome.min.css', null, '4.6.3', 'all' );
 
     wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css', null, '1.2', 'all' );
+
+    wp_deregister_style( 'freelancer' );
+    wp_enqueue_style( 'freelancer', get_template_directory_uri() . '/components/freelancer/css/freelancer.css', false, null, 'all');
 
     /* Pinegrow generated Enqueue Styles End */
 

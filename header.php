@@ -18,39 +18,44 @@
     <body class="<?php echo implode(' ', get_body_class()); ?>">
         <div class="site-container">
             <header id="masthead" class="site-header">
-                <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
-                    <div class="container">
-                        <!--Brand and toggle get grouped for better mobile display-->
-                        <div class="navbar-header page-scroll">
-                            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+                    <div class="container-fluid">
+                        <div class="navbar-header site-branding">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                                 <span class="sr-only"><?php _e( 'Toggle navigation', 'pgwoo3' ); ?></span>
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand navbar-custom-brand navbar-shrink" href="#page-top" img="img" resposive=""><?php _e( 'Harold Pine', 'pgwoo3' ); ?> </a>
+                            <?php if ( ! has_custom_logo() ) : ?>
+                                <a class="navbar-brand site-title" href="<?php echo esc_url( get_home_url() ); ?>"><?php bloginfo( 'name' ); ?></a>
+                            <?php else : ?>
+                                <?php pg_starter_the_custom_logo() ?>
+                            <?php endif; ?>
                         </div>
-                        <!--Collect the nav links, forms, and other content for toggling-->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav navbar-right">
-                                <li class="hidden">
-                                    <a href="#page-top"></a>
-                                </li>
-                                <li class="page-scroll">
-                                    <a href="#portfolio"><?php _e( 'Portfolio', 'pgwoo3' ); ?></a>
-                                </li>
-                                <li class="page-scroll">
-                                    <a href="#about"><?php _e( 'About', 'pgwoo3' ); ?></a>
-                                </li>
-                                <li class="page-scroll">
-                                    <a href="#contact"><?php _e( 'Contact', 'pgwoo3' ); ?></a>
-                                </li>
-                            </ul>
+                            <?php wp_nav_menu( array(
+                                    'menu_class' => 'nav navbar-nav navbar-right',
+                                    'container' => '',
+                                    'depth' => '2',
+                                    'theme_location' => 'primary',
+                                    'fallback_cb' => 'wp_bootstrap_navwalker::fallback',
+                                    'walker' => new wp_bootstrap_navwalker()
+                            ) ); ?>
                         </div>
-                        <!--/.navbar-collapse-->
                     </div>
-                    <!--/.container-fluid-->
                 </nav>
+                <?php
+                    $image_attributes = (is_singular() || in_the_loop()) ? wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'full' ) : null;
+                    if( !$image_attributes  && ( $header_image = get_header_image() ) ) $image_attributes = array( $header_image );
+                ?>
+                <div class="jumbotron jumbo-bkg" style="<?php if($image_attributes) echo 'background-image:url(\''.$image_attributes[0].'\')' ?>;color:<?php echo '#'.get_header_textcolor() ?>;">
+                    <div class="container dimmer jumbotron-inner">
+                        <h1><?php bloginfo( 'name' ); ?></h1>
+                        <p><?php bloginfo( 'description' ); ?></p>
+                        <p><a class="btn btn-primary btn-lg btn-outline" role="button" href="#more" style="color:<?php echo '#'.get_header_textcolor() ?>;border-color:<?php echo '#'.get_header_textcolor() ?>;"><?php _e( 'Read more', 'pgwoo3' ); ?></a></p>
+                    </div>
+                </div>
                 <div class="container-fluid breadcrumbs-section" id="more">
                     <div class="row">
                         <div class="col-md-12">
@@ -64,19 +69,4 @@
                     <?php wp_enqueue_script( 'comment-reply' ); ?>
                 <?php endif; ?>
             </header>
-            <div class="hero jumbotron">
-                <div class="hero-content">
-                    <video loop autoplay muted poster="<?php echo get_template_directory_uri(); ?>/videos/video_background.jpg" class="hero-video" src="videos/video_background.mp4">
-                        <source src="<?php echo get_template_directory_uri(); ?>/videos/video_background.mp4" type="video/mp4" />
-                        <source src="<?php echo get_template_directory_uri(); ?>/videos/video_background.ogg" type="video/ogg" />
-                        <source src="<?php echo get_template_directory_uri(); ?>/videos/video_background.webm" type="video/webm" />
-                        <?php _e( 'Your browser does not support the HTML5 video tag.', 'pgwoo3' ); ?>
-                    </video>
-                    <div class="hero-text">
-                        <h1><?php bloginfo( 'name' ); ?></h1>
-                        <p><?php bloginfo( 'description' ); ?></p>
-                        <a class="btn btn-primary btn-lg btn-outline" href="#more"><?php _e( 'Read More', 'pgwoo3' ); ?></a>
-                    </div>
-                </div>
-            </div>
             <main class="site-inner site-content">
