@@ -196,14 +196,23 @@ if ( ! function_exists( 'pg_starter_enqueue_scripts' ) ) :
 
         /* Pinegrow generated Enqueue Styles Begin */
 
+    wp_deregister_style( 'bootstrap' );
+    wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', false, null, 'all');
+
+    wp_deregister_style( 'fontawesome' );
+    wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/assets/font-awesome-4.6.3/css/font-awesome.min.css', false, null, 'all');
+
+    wp_deregister_style( 'freelancer' );
+    wp_enqueue_style( 'freelancer', get_template_directory_uri() . '/components/freelancer/css/freelancer.css', false, null, 'all');
+
+    wp_deregister_style( 'style' );
+    wp_enqueue_style( 'style', get_bloginfo('stylesheet_url'), false, null, 'all');
+
     wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', null, '3.3.6', 'all' );
 
     wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/assets/font-awesome-4.6.3/css/font-awesome.min.css', null, '4.6.3', 'all' );
 
     wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css', null, '1.2', 'all' );
-
-    wp_deregister_style( 'freelancer' );
-    wp_enqueue_style( 'freelancer', get_template_directory_uri() . '/components/freelancer/css/freelancer.css', false, null, 'all');
 
     /* Pinegrow generated Enqueue Styles End */
 
